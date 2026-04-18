@@ -35,6 +35,16 @@ dist-ssr
 /godot/bin/libsrc_game.so
 /godot/bin/src_game.dll
 /godot/bin/libsrc_game.dylib
+/godot/assets/
 
 # Tauri
 /src-tauri/gen/
+
+# Godot Export
+/godot/export/
+*.pck
+
+# Web/Env
+.env*
+.env.local
+.env.*.local

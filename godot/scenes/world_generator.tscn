@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dipke46nsp38o"]
+
+[ext_resource type="Script" uid="uid://x6kwslsvbqlq" path="res://scripts/world_generator.gd" id="1_yncnp"]
+[ext_resource type="PackedScene" uid="uid://tkh2lsx7hk8n" path="res://assets/models/Untitled.glb" id="2_g11jo"]
+[ext_resource type="PackedScene" uid="uid://b31dnd6r0ah3k" path="res://assets/models/arms/scene.gltf" id="3_1n2ho"]
+
+[node name="WorldGenerator" type="WorldGenerator" unique_id=1908665100]
+
+[node name="WorldGenerator" type="WorldGenerator" parent="." unique_id=1561190997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6274159, -0.5705031, 0)
+script = ExtResource("1_yncnp")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2065588920]
+transform = Transform3D(1, 0, 0, 0, 0.82094, 0.5710145, 0, -0.5710145, 0.82094, 0.29276443, 2.450754, 4.8950024)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=789409623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0148394, 0)
+
+[node name="Untitled" parent="." unique_id=2110597074 instance=ExtResource("2_g11jo")]
+visible = false
+
+[node name="Sketchfab_Scene" parent="." unique_id=1367013845 instance=ExtResource("3_1n2ho")]
