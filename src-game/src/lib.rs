@@ -57,7 +57,6 @@ impl INode3D for WorldGenerator {
 impl WorldGenerator {
     #[func]
     pub fn spawn_random_cubes(&mut self, count: i32) {
-        godot_print!("Rust: Menanam {} kotak secara acak...", count);
         let mut base = self.base_mut();
         
         for i in 0..count {
