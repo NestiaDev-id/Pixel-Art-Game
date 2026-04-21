@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://dipke46nsp38o"]
 
-[ext_resource type="PackedScene" uid="uid://tkh2lsx7hk8n" path="res://assets/models/Untitled.glb" id="1_b0nr5"]
+[ext_resource type="PackedScene" uid="uid://c2t8w6yf5mlsb" path="res://scenes/girl_1.tscn" id="1_b0nr5"]
 
-[node name="WorldGenerator" type="WorldGenerator" unique_id=156865248]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b0nr5"]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=85823644]
-transform = Transform3D(1, 0, 0, 0, 0.76050806, 0.6493286, 0, -0.6493286, 0.76050806, 0, 1.5898262, 2.610549)
+[node name="Node3D" type="Node3D" unique_id=811856062]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1682817336]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1792015220]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 2)
 
-[node name="WorldGenerator" type="WorldGenerator" parent="." unique_id=468831362]
+[node name="Node3D" parent="." unique_id=1078137919 instance=ExtResource("1_b0nr5")]
 
-[node name="Untitled" parent="." unique_id=1002945788 instance=ExtResource("1_b0nr5")]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1901697971]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1511413914]
+shape = SubResource("WorldBoundaryShape3D_b0nr5")

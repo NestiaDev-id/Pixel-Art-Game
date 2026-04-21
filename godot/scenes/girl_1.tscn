@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c2t8w6yf5mlsb"]
+
+[ext_resource type="Texture2D" uid="uid://kf4cnyhkgqrd" path="res://assets/actors/Chara Girl/Girl_1/Idle.png" id="1_byi3g"]
+[ext_resource type="Script" uid="uid://cge64sqs0hqde" path="res://scripts/girl_1.gd" id="1_w04ej"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w04ej"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly4s2"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46u1g"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8sru"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym2hw"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnx8j"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ifk0"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b18xm"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53mve"]
+atlas = ExtResource("1_byi3g")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igiuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w04ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly4s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46u1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8sru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym2hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnx8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ifk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b18xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53mve")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_55iqj"]
+
+[node name="Node3D" type="CharacterBody3D" unique_id=1078137919]
+script = ExtResource("1_w04ej")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=494396838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66044176, 0)
+sprite_frames = SubResource("SpriteFrames_igiuf")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1744586340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37779713, 0)
+shape = SubResource("SphereShape3D_55iqj")
