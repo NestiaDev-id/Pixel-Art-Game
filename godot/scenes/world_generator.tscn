@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://dipke46nsp38o"]
 
 [ext_resource type="PackedScene" uid="uid://c2t8w6yf5mlsb" path="res://scenes/girl_1.tscn" id="1_b0nr5"]
+[ext_resource type="PackedScene" uid="uid://boch888khbtum" path="res://assets/environment/School/Untitled_school.glb" id="1_scwht"]
 [ext_resource type="PackedScene" uid="uid://tkh2lsx7hk8n" path="res://assets/models/Untitled_sigrika.glb" id="1_udtrs"]
 [ext_resource type="Texture2D" uid="uid://dbmkgornw2l6q" path="res://assets/actors/Sigrika/textures/Face_D.png" id="2_4ltih"]
 [ext_resource type="Texture2D" uid="uid://3vs0hfewk45b" path="res://assets/actors/Sigrika/textures/Eye_D.png" id="3_scwht"]
+[ext_resource type="Script" uid="uid://4edlkq7sigak" path="res://scripts/player_controller.gd" id="3_womco"]
 [ext_resource type="Texture2D" uid="uid://ngromapdchmq" path="res://assets/actors/Sigrika/textures/Hair_D.png" id="4_womco"]
 [ext_resource type="Texture2D" uid="uid://b1he7btm6tqxc" path="res://assets/actors/Sigrika/textures/Up_D.png" id="5_7q2ro"]
 [ext_resource type="Texture2D" uid="uid://dagt6rdjwvwfh" path="res://assets/actors/Sigrika/textures/Up_Skin.png" id="6_sgqcj"]
 [ext_resource type="Texture2D" uid="uid://m3a3rr4mlk5g" path="res://assets/actors/Sigrika/textures/Down_D.png" id="7_fv1wp"]
 [ext_resource type="Texture2D" uid="uid://dtgwv2tn153s4" path="res://assets/actors/Sigrika/textures/Cloth_D.png" id="8_bmal4"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b0nr5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xu4j"]
 shading_mode = 0
@@ -174,22 +178,46 @@ albedo_texture = ExtResource("8_bmal4")
 shading_mode = 0
 albedo_texture = ExtResource("8_bmal4")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b0nr5"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_scwht"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_womco"]
+
+[sub_resource type="Sky" id="Sky_7q2ro"]
+sky_material = SubResource("ProceduralSkyMaterial_womco")
+
+[sub_resource type="Environment" id="Environment_sgqcj"]
+background_mode = 2
+sky = SubResource("Sky_7q2ro")
 
 [node name="Node3D" type="Node3D" unique_id=811856062]
 
 [node name="WorldGenerator" type="WorldGenerator" parent="." unique_id=857479048]
+process_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1792015220]
-transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0.6076839, 1.3046569, 1.2024487)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=288436000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.44846, 126.410034, -1043.4314)
 
-[node name="Untitled_sigrika" parent="." unique_id=841129745 instance=ExtResource("1_udtrs")]
+[node name="Untitled_school" parent="." unique_id=1934013014 instance=ExtResource("1_scwht")]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 1.013279e-05, 0.004895687, -0.00012373924)
+
+[node name="Node3D" parent="." unique_id=1078137919 instance=ExtResource("1_b0nr5")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1901697971]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1511413914]
+shape = SubResource("WorldBoundaryShape3D_b0nr5")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=309042784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 359.48563, -0.1776905, -959.0661)
+script = ExtResource("3_womco")
+
+[node name="Untitled_sigrika" parent="CharacterBody3D" unique_id=841129745 instance=ExtResource("1_udtrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7828481, 0.12073493, 0)
 
-[node name="rigidbodies" parent="Untitled_sigrika/Sigrika" parent_id_path=PackedInt32Array(841129745, 1742914976) index="1" unique_id=223895774]
+[node name="rigidbodies" parent="CharacterBody3D/Untitled_sigrika/Sigrika" parent_id_path=PackedInt32Array(841129745, 1742914976) index="1" unique_id=223895774]
 visible = false
 
-[node name="Sigrika_mesh" parent="Untitled_sigrika/Sigrika/Sigrika_arm/Skeleton3D" parent_id_path=PackedInt32Array(841129745, 1195662953) index="0" unique_id=1703438223]
+[node name="Sigrika_mesh" parent="CharacterBody3D/Untitled_sigrika/Sigrika/Sigrika_arm/Skeleton3D" parent_id_path=PackedInt32Array(841129745, 1195662953) index="0" unique_id=1703438223]
 surface_material_override/0 = SubResource("StandardMaterial3D_5xu4j")
 surface_material_override/1 = SubResource("StandardMaterial3D_0dbi3")
 surface_material_override/2 = SubResource("StandardMaterial3D_wfgit")
@@ -232,13 +260,19 @@ surface_material_override/39 = SubResource("StandardMaterial3D_xwgqi")
 surface_material_override/40 = SubResource("StandardMaterial3D_bf18c")
 surface_material_override/41 = SubResource("StandardMaterial3D_nr1xp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Untitled_sigrika" unique_id=1797237311]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Untitled_sigrika" unique_id=1797237311]
 
-[node name="Node3D" parent="." unique_id=1078137919 instance=ExtResource("1_b0nr5")]
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1223145050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8557323, 1.3517127, 0.6092328)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1901697971]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=1792015220]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0.010253906, 0.5244796, 1.2776489)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1511413914]
-shape = SubResource("WorldBoundaryShape3D_b0nr5")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=52693639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.814323, 0.9421265, -0.09756237)
+shape = SubResource("CapsuleShape3D_scwht")
 
-[editable path="Untitled_sigrika"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1338846700]
+environment = SubResource("Environment_sgqcj")
+
+[editable path="CharacterBody3D/Untitled_sigrika"]
