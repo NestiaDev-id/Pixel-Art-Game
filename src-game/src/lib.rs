@@ -8,6 +8,10 @@ struct GameExtension;
 #[gdextension]
 unsafe impl ExtensionLibrary for GameExtension {}
 
+// ============================================================
+// SCHOOL ARCHITECT - Procedural School Generator
+// ============================================================
+
 const WALL_HEIGHT: f32 = 3.0;
 const WALL_THICKNESS: f32 = 0.2;
 const FLOOR_THICKNESS: f32 = 0.1;
@@ -23,6 +27,10 @@ const WINDOW_HEIGHT: f32 = 1.5;
 
 const NUM_CLASSROOMS_PER_SIDE: i32 = 4;
 
+// ============================================================
+// WARNA MATERIAL
+// ============================================================
+
 fn color_floor() -> Color { Color::from_rgb(0.75, 0.72, 0.68) }
 fn color_wall() -> Color { Color::from_rgb(0.92, 0.90, 0.85) }
 fn color_wall_exterior() -> Color { Color::from_rgb(0.80, 0.78, 0.73) }
@@ -32,6 +40,10 @@ fn color_door() -> Color { Color::from_rgb(0.55, 0.35, 0.20) }
 fn color_blackboard() -> Color { Color::from_rgb(0.15, 0.25, 0.15) }
 fn color_desk() -> Color { Color::from_rgb(0.65, 0.50, 0.35) }
 fn color_roof() -> Color { Color::from_rgb(0.45, 0.35, 0.30) }
+
+// ============================================================
+// HELPER: Membuat satu box mesh dengan posisi, ukuran, dan warna
+// ============================================================
 
 fn create_box_node(pos: Vector3, size: Vector3, color: Color) -> Gd<MeshInstance3D> {
     let mut mesh_instance = MeshInstance3D::new_alloc();
@@ -46,6 +58,10 @@ fn create_box_node(pos: Vector3, size: Vector3, color: Color) -> Gd<MeshInstance
 
     mesh_instance
 }
+
+// ============================================================
+// WORLD GENERATOR CLASS
+// ============================================================
 
 #[derive(GodotClass)]
 #[class(base=Node3D)]
@@ -209,7 +225,9 @@ impl WorldGenerator {
         godot_print!("=== SCHOOL GENERATED SUCCESSFULLY ===");
     }
 
-  
+    // ========================================================
+    // BUILD CLASSROOM
+    // ========================================================
     fn build_classroom(nodes: &mut Vec<Gd<MeshInstance3D>>, cx: f32, cz: f32, is_south: bool) {
         let door_side = if is_south { -1.0 } else { 1.0 };
 
@@ -292,6 +310,9 @@ impl WorldGenerator {
         }
     }
 
+    // ========================================================
+    // LEGACY
+    // ========================================================
     #[func]
     pub fn spawn_random_cubes(&mut self, count: i32) {
         let mut nodes: Vec<Gd<MeshInstance3D>> = Vec::new();
