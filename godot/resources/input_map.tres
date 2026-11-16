@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/actions = {
+"interact": "E / Gamepad X",
+"jump": "Space / Gamepad A",
+"move_backward": "S / Down Arrow",
+"move_forward": "W / Up Arrow",
+"move_left": "A / Left Arrow",
+"move_right": "D / Right Arrow",
+"sprint": "Shift / Gamepad B"
+}
