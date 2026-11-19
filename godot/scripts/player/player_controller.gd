@@ -27,6 +27,17 @@ func _ready() -> void:
 	floor_constant_speed = true
 	floor_stop_on_slope = true
 	floor_max_angle = deg_to_rad(50.0)
+	
+	# Sembunyikan mesh visualizer collider MMD (482 rigid body kapsul)
+	_hide_rigid_body_meshes(model_pivot)
+
+func _hide_rigid_body_meshes(node: Node) -> void:
+	for child in node.get_children():
+		if child is MeshInstance3D:
+			# Hanya pertahankan mesh tubuh utama Sigrika (Sigrika_mesh)
+			if not ("sigrika" in child.name.to_lower()):
+				child.visible = false
+		_hide_rigid_body_meshes(child)
 
 func _physics_process(delta: float) -> void:
 	# 1. Terapkan Gravitasi Jolt Physics (9.8 m/s^2)
