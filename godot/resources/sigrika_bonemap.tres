@@ -1,0 +1,31 @@
+[gd_resource type="BoneMap" format=3 uid="uid://dpvaa6o1j6f8"]
+
+[sub_resource type="BoneMapProfileHumanoid" id="BoneMapProfileHumanoid_sigrika"]
+
+[resource]
+profile = SubResource("BoneMapProfileHumanoid_sigrika")
+bonemap = {
+"Chest": &"上半身1",
+"Head": &"頭",
+"Hips": &"下半身",
+"LeftFoot": &"足首.L",
+"LeftHand": &"手首.L",
+"LeftLowerArm": &"ひじ.L",
+"LeftLowerLeg": &"ひざ.L",
+"LeftShoulder": &"肩.L",
+"LeftToes": &"つま先.L",
+"LeftUpperArm": &"腕.L",
+"LeftUpperLeg": &"足.L",
+"Neck": &"首",
+"RightFoot": &"足首.R",
+"RightHand": &"手首.R",
+"RightLowerArm": &"ひじ.R",
+"RightLowerLeg": &"ひざ.R",
+"RightShoulder": &"肩.R",
+"RightToes": &"つま先.R",
+"RightUpperArm": &"腕.R",
+"RightUpperLeg": &"足.R",
+"Root": &"全ての親",
+"Spine": &"上半身",
+"UpperChest": &"上半身2"
+}
